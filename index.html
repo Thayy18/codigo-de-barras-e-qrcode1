@@ -4,56 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Códigos de Leitura: QR Code & Código de Barras</title>
+    <!-- Importação das fontes Poppins e Outfit do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1e293b;
-            --accent-qr: #2563eb;
-            --accent-bar: #0d9488;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #334155;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
+            --primary: #831843;        /* Rosa escuro / Vinho elegante */
+            --primary-light: #9d174d;  /* Rosa médio vibrante */
+            --accent-qr: #ec4899;      /* Rosa Magenta */
+            --accent-bar: #f43f5e;     /* Rosa Coral */
+            --bg: #fdf2f8;             /* Rosa clarinho suave para o fundo */
+            --card-bg: #ffffff;        /* Branco puro para destaques */
+            --text-main: #4c0519;       /* Texto em tom ameixa escuro */
+            --text-muted: #831843;      /* Texto secundário em tom rosa queimado */
+            --border: #fbcfe8;          /* Borda rosa suave */
+            --shadow: 0 10px 25px -5px rgba(236, 72, 153, 0.1), 0 8px 10px -6px rgba(236, 72, 153, 0.05);
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Poppins', sans-serif;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
             background-color: var(--bg);
             color: var(--text-main);
+            font-family: var(--font-body);
             line-height: 1.6;
         }
 
         header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            background: linear-gradient(135deg, #831843 0%, #be185d 50%, #f43f5e 100%);
             color: white;
-            padding: 3rem 1.5rem;
+            padding: 3.5rem 1.5rem;
             text-align: center;
-            border-bottom: 4px solid var(--accent-qr);
+            border-bottom: 5px solid #fb7185;
+            box-shadow: 0 4px 20px rgba(131, 24, 67, 0.25);
         }
 
         header h1 {
-            font-size: 2.2rem;
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            letter-spacing: -0.025em;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         header p {
-            color: #94a3b8;
-            font-size: 1.1rem;
-            max-width: 600px;
+            color: #ffe4e6;
+            font-size: 1.15rem;
+            font-weight: 300;
+            max-width: 650px;
             margin: 0 auto;
         }
 
         .container {
             max-width: 1100px;
-            margin: 2.5rem auto;
+            margin: 3rem auto;
             padding: 0 1.5rem;
         }
 
@@ -61,60 +73,78 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
         }
 
         .card {
             background: var(--card-bg);
-            border-radius: 12px;
+            border-radius: 16px;
             border: 1px solid var(--border);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            padding: 2rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: var(--shadow);
+            padding: 2.2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ec4899, #f43f5e);
         }
 
         .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -10px rgba(236, 72, 153, 0.2);
         }
 
         .card-tag {
             display: inline-block;
-            padding: 0.25rem 0.75rem;
+            padding: 0.35rem 0.85rem;
+            font-family: var(--font-heading);
             font-size: 0.75rem;
-            font-weight: 700;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
             border-radius: 9999px;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
         }
 
         .card-qr .card-tag {
-            background-color: #dbeafe;
-            color: var(--accent-qr);
+            background-color: #fce7f3;
+            color: #be185d;
         }
 
         .card-bar .card-tag {
-            background-color: #ccfbf1;
-            color: var(--accent-bar);
+            background-color: #ffe4e6;
+            color: #e11d48;
         }
 
         .card h2 {
-            font-size: 1.5rem;
+            font-family: var(--font-heading);
+            font-size: 1.65rem;
+            font-weight: 600;
             margin-bottom: 0.75rem;
             color: var(--primary);
         }
 
         .card p {
-            color: var(--text-muted);
+            color: #701a75;
             font-size: 0.95rem;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
         }
 
         .card h3 {
-            font-size: 1rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-bottom: 0.75rem;
         }
 
         .card ul {
@@ -123,17 +153,17 @@
 
         .card ul li {
             position: relative;
-            padding-left: 1.25rem;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--text-main);
+            padding-left: 1.5rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.92rem;
+            color: #4a044e;
         }
 
         .card ul li::before {
-            content: "✓";
+            content: "♥";
             position: absolute;
             left: 0;
-            font-weight: bold;
+            font-size: 0.85rem;
         }
 
         .card-qr ul li::before { color: var(--accent-qr); }
@@ -141,17 +171,30 @@
 
         .section-title {
             text-align: center;
-            font-size: 1.75rem;
+            font-family: var(--font-heading);
+            font-size: 1.85rem;
+            font-weight: 700;
             color: var(--primary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #ec4899, #f43f5e);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
         }
 
         .table-wrapper {
             background: var(--card-bg);
-            border-radius: 12px;
+            border-radius: 16px;
             border: 1px solid var(--border);
             overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow);
         }
 
         table {
@@ -161,20 +204,22 @@
         }
 
         th, td {
-            padding: 1rem 1.25rem;
+            padding: 1.1rem 1.4rem;
             font-size: 0.95rem;
         }
 
         th {
-            background-color: #f1f5f9;
+            background-color: #fbcfe8;
             color: var(--primary);
+            font-family: var(--font-heading);
             font-weight: 600;
-            border-bottom: 1px solid var(--border);
+            font-size: 1rem;
+            border-bottom: 2px solid #f472b6;
         }
 
         td {
             border-bottom: 1px solid var(--border);
-            color: var(--text-main);
+            color: #581c87;
         }
 
         tr:last-child td {
@@ -182,16 +227,22 @@
         }
 
         tr:nth-child(even) {
-            background-color: #fafafa;
+            background-color: #fdf2f8;
         }
 
         footer {
-            margin-top: 4rem;
-            background-color: var(--primary);
-            color: #94a3b8;
+            margin-top: 4.5rem;
+            background: linear-gradient(135deg, #831843 0%, #4c0519 100%);
+            color: #fbcfe8;
             text-align: center;
-            padding: 2rem 1rem;
-            font-size: 0.875rem;
+            padding: 2.5rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        footer strong {
+            color: #ffffff;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -255,13 +306,13 @@
                     </tr>
                     <tr>
                         <td><strong>Capacidade de Dados</strong></td>
-                        <td>Até 20 a 100 caracteres</td>
-                        <td>Até 7.089 caracteres numéricos</td>
+                        <td>Até 20 a 100 caracteres (números/letras)</td>
+                        <td>Até 7.089 caracteres numéricos ou 4.296 alfanuméricos</td>
                     </tr>
                     <tr>
                         <td><strong>Tolerância a Danos</strong></td>
                         <td>Baixa (se a linha romper, fica ilegível)</td>
-                        <td>Alta (recupera até 30% de danos)</td>
+                        <td>Alta (recupera até 30% de danos por correção de erro)</td>
                     </tr>
                     <tr>
                         <td><strong>Dispositivos de Leitura</strong></td>
@@ -271,7 +322,7 @@
                     <tr>
                         <td><strong>Tipo de Dados</strong></td>
                         <td>Apenas IDs e números de série</td>
-                        <td>URLs, textos, Pix, Wi-Fi, vCards</td>
+                        <td>URLs, textos, dados de pagamento, Wi-Fi, vCards</td>
                     </tr>
                 </tbody>
             </table>
