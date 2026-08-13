@@ -3,25 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Códigos de Leitura: QR Code & Código de Barras</title>
-    <!-- Importação das fontes Poppins e Outfit do Google Fonts -->
+    <title>QRCode e Código de Barras</title>
+    <!-- Importando fontes bonitas do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Grand Hotel&family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #831843;        /* Rosa escuro / Vinho elegante */
-            --primary-light: #9d174d;  /* Rosa médio vibrante */
-            --accent-qr: #ec4899;      /* Rosa Magenta */
-            --accent-bar: #f43f5e;     /* Rosa Coral */
-            --bg: #fdf2f8;             /* Rosa clarinho suave para o fundo */
-            --card-bg: #ffffff;        /* Branco puro para destaques */
-            --text-main: #4c0519;       /* Texto em tom ameixa escuro */
-            --text-muted: #831843;      /* Texto secundário em tom rosa queimado */
-            --border: #fbcfe8;          /* Borda rosa suave */
-            --shadow: 0 10px 25px -5px rgba(236, 72, 153, 0.1), 0 8px 10px -6px rgba(236, 72, 153, 0.05);
-            --font-heading: 'Outfit', sans-serif;
-            --font-body: 'Poppins', sans-serif;
+            --bg-outer: #fce7f0;
+            --bg-paper: #fbcfe8;
+            --pink-soft: #f472b6;
+            --pink-badge: #f472b6;
+            --pink-badge-bg: #fbcfe8;
+            --pink-card: #fdf2f8;
+            --text-dark: #581c87;
+            --text-body: #4c0519;
+            --title-font: 'Caveat', cursive;
+            --badge-font: 'Grand Hotel', cursive;
+            --body-font: 'Nunito', sans-serif;
         }
 
         * {
@@ -31,308 +30,361 @@
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--text-main);
-            font-family: var(--font-body);
-            line-height: 1.6;
+            background-color: #fbcfe8;
+            background-image: radial-gradient(#f472b6 0.8px, transparent 0.8px), radial-gradient(#f472b6 0.8px, #fbcfe8 0.8px);
+            background-size: 32px 32px;
+            background-position: 0 0, 16px 16px;
+            color: var(--text-body);
+            font-family: var(--body-font);
+            display: flex;
+            justify-content: center;
+            padding: 2rem 1rem;
         }
 
+        .flyer-container {
+            width: 100%;
+            max-width: 800px;
+            background: linear-gradient(180deg, #fce7f3 0%, #fbcfe8 50%, #fce7f3 100%);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(190, 24, 93, 0.2);
+            padding: 2.5rem 2rem;
+            position: relative;
+            border: 4px solid #f472b6;
+            overflow: hidden;
+        }
+
+        /* Decorative strip background accents like in the image */
+        .decor-lines {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(244, 114, 182, 0.4);
+            font-weight: bold;
+            user-select: none;
+        }
+        .decor-top-left { top: 15px; left: 20px; }
+        .decor-bottom-right { bottom: 15px; right: 20px; }
+
+        /* Header */
         header {
-            background: linear-gradient(135deg, #831843 0%, #be185d 50%, #f43f5e 100%);
-            color: white;
-            padding: 3.5rem 1.5rem;
             text-align: center;
-            border-bottom: 5px solid #fb7185;
-            box-shadow: 0 4px 20px rgba(131, 24, 67, 0.25);
+            margin-bottom: 2rem;
+            position: relative;
         }
 
         header h1 {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-family: var(--title-font);
+            font-size: 3.6rem;
+            color: #831843;
+            text-shadow: 2px 2px 0px #fbcfe8;
             margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            line-height: 1.1;
         }
 
-        header p {
-            color: #ffe4e6;
-            font-size: 1.15rem;
-            font-weight: 300;
-            max-width: 650px;
-            margin: 0 auto;
+        .barcode-graphic {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 3px;
+            height: 50px;
+            margin: 1rem auto;
+            width: 220px;
+            background: white;
+            padding: 8px;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(131, 24, 67, 0.1);
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
+        .bar {
+            background-color: #831843;
+            height: 100%;
+            border-radius: 1px;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3.5rem;
+        .barcode-numbers {
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: #831843;
+            letter-spacing: 3px;
+            margin-top: 2px;
+            text-align: center;
         }
 
-        .card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            padding: 2.2rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        /* Section Block Style - Alternating Layout */
+        .section-block {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(5px);
+            padding: 1.5rem;
+            border-radius: 20px;
+            border: 2px solid #f9a8d4;
+            box-shadow: 0 8px 15px rgba(236, 72, 153, 0.08);
+        }
+
+        .section-block.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .badge-box {
+            flex: 0 0 200px;
+            background: #fce7f3;
+            border: 3px dashed #ec4899;
+            border-radius: 20px;
+            padding: 1.2rem 1rem;
+            text-align: center;
             position: relative;
-            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(236, 72, 153, 0.15);
         }
 
-        .card::before {
-            content: '';
+        .badge-box::before {
+            content: "///";
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #ec4899, #f43f5e);
+            top: -12px;
+            left: 15px;
+            color: #ec4899;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 30px -10px rgba(236, 72, 153, 0.2);
+        .badge-title {
+            font-family: var(--title-font);
+            font-size: 2.2rem;
+            color: #831843;
+            line-height: 1;
+            font-weight: 700;
         }
 
-        .card-tag {
-            display: inline-block;
-            padding: 0.35rem 0.85rem;
-            font-family: var(--font-heading);
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            border-radius: 9999px;
-            margin-bottom: 1.25rem;
-        }
-
-        .card-qr .card-tag {
-            background-color: #fce7f3;
+        .badge-subtitle {
+            font-family: var(--title-font);
+            font-size: 1.8rem;
             color: #be185d;
         }
 
-        .card-bar .card-tag {
-            background-color: #ffe4e6;
-            color: #e11d48;
+        .content-box {
+            flex: 1;
+            font-size: 0.98rem;
+            color: #4c0519;
+            line-height: 1.6;
         }
 
-        .card h2 {
-            font-family: var(--font-heading);
-            font-size: 1.65rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: var(--primary);
+        .content-box p {
+            margin-bottom: 0.5rem;
         }
 
-        .card p {
-            color: #701a75;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-            font-weight: 400;
+        .content-box ul {
+            margin-left: 1.2rem;
+            margin-top: 0.5rem;
         }
 
-        .card h3 {
-            font-family: var(--font-heading);
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--primary-light);
-            margin-bottom: 0.75rem;
+        .content-box li {
+            margin-bottom: 0.3rem;
         }
 
-        .card ul {
-            list-style: none;
+        /* Extra Details Cards Grid */
+        .extra-section {
+            margin-top: 2.5rem;
         }
 
-        .card ul li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.6rem;
-            font-size: 0.92rem;
-            color: #4a044e;
-        }
-
-        .card ul li::before {
-            content: "♥";
-            position: absolute;
-            left: 0;
-            font-size: 0.85rem;
-        }
-
-        .card-qr ul li::before { color: var(--accent-qr); }
-        .card-bar ul li::before { color: var(--accent-bar); }
-
-        .section-title {
+        .extra-title {
+            font-family: var(--title-font);
+            font-size: 2.6rem;
+            color: #831843;
             text-align: center;
-            font-family: var(--font-heading);
-            font-size: 1.85rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1.75rem;
-            position: relative;
+            margin-bottom: 1.5rem;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, #ec4899, #f43f5e);
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            border: 2px solid #f472b6;
+            box-shadow: 0 4px 12px rgba(219, 39, 119, 0.1);
+        }
+
+        .info-card h4 {
+            font-family: var(--body-font);
+            font-size: 1.1rem;
+            color: #be185d;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card p {
+            font-size: 0.9rem;
+            color: #701a75;
+        }
+
+        /* QR Code Decorative element */
+        .qr-icon-graphic {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border: 3px solid #be185d;
+            border-radius: 10px;
             margin: 0.5rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3px;
+            padding: 5px;
+        }
+
+        .qr-pixel {
+            background-color: #be185d;
             border-radius: 2px;
         }
 
-        .table-wrapper {
-            background: var(--card-bg);
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-        }
-
-        th, td {
-            padding: 1.1rem 1.4rem;
-            font-size: 0.95rem;
-        }
-
-        th {
-            background-color: #fbcfe8;
-            color: var(--primary);
-            font-family: var(--font-heading);
-            font-weight: 600;
-            font-size: 1rem;
-            border-bottom: 2px solid #f472b6;
-        }
-
-        td {
-            border-bottom: 1px solid var(--border);
-            color: #581c87;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        tr:nth-child(even) {
-            background-color: #fdf2f8;
-        }
-
         footer {
-            margin-top: 4.5rem;
-            background: linear-gradient(135deg, #831843 0%, #4c0519 100%);
-            color: #fbcfe8;
             text-align: center;
-            padding: 2.5rem 1rem;
-            font-size: 0.9rem;
-            font-weight: 300;
+            margin-top: 2.5rem;
+            padding-top: 1rem;
+            border-top: 2px dashed #f472b6;
+            color: #831843;
+            font-size: 0.85rem;
+            font-family: var(--body-font);
         }
 
-        footer strong {
-            color: #ffffff;
-            font-weight: 500;
+        /* Responsividade para celulares */
+        @media (max-width: 650px) {
+            .section-block, .section-block.reverse {
+                flex-direction: column;
+                text-align: center;
+            }
+            .badge-box {
+                width: 100%;
+            }
+            header h1 {
+                font-size: 2.8rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Tecnologias de Leitura de Dados</h1>
-        <p>Um guia completo sobre o funcionamento e aplicação de Códigos de Barras e QR Codes.</p>
-    </header>
+    <div class="flyer-container">
+        <div class="decor-lines decor-top-left">\\</div>
+        <div class="decor-lines decor-bottom-right">///</div>
 
-    <div class="container">
-        
-        <div class="grid">
-            <!-- Código de Barras -->
-            <div class="card card-bar">
-                <span class="card-tag">Unidimensional (1D)</span>
-                <h2>Código de Barras</h2>
-                <p>Criado na década de 1970, o código de barras armazena informações horizontalmente através de uma sequência de linhas pretas e brancas de diferentes larguras.</p>
-                
-                <h3>Principais Aplicações:</h3>
-                <ul>
-                    <li>Automação de caixas de supermercados (EAN-13)</li>
-                    <li>Controle e rastreio de estoque e logística</li>
-                    <li>Boletos bancários e faturamento</li>
-                    <li>Etiquetagem de encomendas postais</li>
-                </ul>
+        <header>
+            <h1>QRCode e Código de barras</h1>
+            
+            <div class="barcode-graphic">
+                <div class="bar" style="width: 4px;"></div>
+                <div class="bar" style="width: 2px;"></div>
+                <div class="bar" style="width: 6px;"></div>
+                <div class="bar" style="width: 1px;"></div>
+                <div class="bar" style="width: 5px;"></div>
+                <div class="bar" style="width: 3px;"></div>
+                <div class="bar" style="width: 2px;"></div>
+                <div class="bar" style="width: 7px;"></div>
+                <div class="bar" style="width: 2px;"></div>
+                <div class="bar" style="width: 4px;"></div>
+                <div class="bar" style="width: 1px;"></div>
+                <div class="bar" style="width: 6px;"></div>
             </div>
+            <div class="barcode-numbers">0 00035 54562 0</div>
+        </header>
 
-            <!-- QR Code -->
-            <div class="card card-qr">
-                <span class="card-tag">Bidimensional (2D)</span>
-                <h2>QR Code</h2>
-                <p>Desenvolvido em 1994 pela Denso Wave, o QR Code armazena dados em duas dimensões (horizontal e vertical), permitindo guardar volume muito superior de informações.</p>
-                
-                <h3>Principais Aplicações:</h3>
-                <ul>
-                    <li>Pagamentos instantâneos (Pix, carteiras digitais)</li>
-                    <li>Acesso a URLs, cardápios e sites</li>
-                    <li>Autenticação de dois fatores (2FA)</li>
-                    <li>Marketing interativo e conexões Wi-Fi</li>
-                </ul>
+        <!-- Bloco 1: QR Code o que é? -->
+        <div class="section-block">
+            <div class="badge-box">
+                <div class="badge-title">QRCode</div>
+                <div class="badge-subtitle">o que é?</div>
+            </div>
+            <div class="content-box">
+                <p><strong>QR Code:</strong> O QR Code (Quick Response Code) é um código bidimensional (2D) formado por pequenos quadrados pretos e brancos que podem armazenar uma grande quantidade de informações, como links, textos, contatos, localização e dados para pagamentos.</p>
+                <p>Ele pode ser lido facilmente pela câmera de um smartphone ou por leitores específicos, sendo amplamente utilizado em pagamentos digitais, cardápios eletrônicos, ingressos e compartilhamento de informações.</p>
             </div>
         </div>
 
-        <!-- Tabela Comparativa -->
-        <h2 class="section-title">Comparação Direta</h2>
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Característica</th>
-                        <th>Código de Barras (1D)</th>
-                        <th>QR Code (2D)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Direção de Leitura</strong></td>
-                        <td>Apenas Horizontal</td>
-                        <td>Horizontal e Vertical</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Capacidade de Dados</strong></td>
-                        <td>Até 20 a 100 caracteres (números/letras)</td>
-                        <td>Até 7.089 caracteres numéricos ou 4.296 alfanuméricos</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Tolerância a Danos</strong></td>
-                        <td>Baixa (se a linha romper, fica ilegível)</td>
-                        <td>Alta (recupera até 30% de danos por correção de erro)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Dispositivos de Leitura</strong></td>
-                        <td>Leitores ópticos a laser dedicados</td>
-                        <td>Câmeras de smartphones e escâneres 2D</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Tipo de Dados</strong></td>
-                        <td>Apenas IDs e números de série</td>
-                        <td>URLs, textos, dados de pagamento, Wi-Fi, vCards</td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- Bloco 2: Código de barras o que é? -->
+        <div class="section-block reverse">
+            <div class="badge-box">
+                <div class="badge-title">Código de barras</div>
+                <div class="badge-subtitle">o que é?</div>
+            </div>
+            <div class="content-box">
+                <p><strong>Código de barras:</strong> O código de barras é um código unidimensional (1D) composto por linhas verticais e espaços de diferentes larguras que armazenam uma quantidade limitada de informações, geralmente um número de identificação do produto.</p>
+                <p>Ele é lido por leitores ópticos e é muito utilizado no comércio, em supermercados, farmácias, estoques e na logística para facilitar a identificação, o controle e o registro de produtos.</p>
+            </div>
         </div>
+
+        <!-- Bloco 3: Uso no dia a dia -->
+        <div class="section-block">
+            <div class="badge-box">
+                <div class="badge-title">Uso no dia</div>
+                <div class="badge-subtitle">a dia</div>
+            </div>
+            <div class="content-box">
+                <p>O <strong>código de barras</strong> é usado para identificar produtos em supermercados, farmácias e lojas, facilitando o controle de vendas e estoque automatizado.</p>
+                <p>Já o <strong>QR Code</strong> é utilizado no cotidiano para pagamentos instantâneos (como Pix), cardápios digitais em restaurantes, validação de ingressos de shows, autenticação em dois fatores e acesso rápido a sites sem precisar digitar URLs longas.</p>
+            </div>
+        </div>
+
+        <!-- Bloco 4: Características -->
+        <div class="section-block reverse">
+            <div class="badge-box">
+                <div class="badge-title">Características</div>
+                <div class="qr-icon-graphic">
+                    <div class="qr-pixel"></div>
+                    <div class="qr-pixel"></div>
+                    <div class="qr-pixel"></div>
+                    <div class="qr-pixel"></div>
+                    <div class="qr-pixel" style="background:transparent;"></div>
+                    <div class="qr-pixel"></div>
+                    <div class="qr-pixel"></div>
+                    <div class="qr-pixel"></div>
+                    <div class="qr-pixel"></div>
+                </div>
+            </div>
+            <div class="content-box">
+                <p>O <strong>código de barras</strong> é formado por linhas verticais e armazena poucas informações (geralmente até 20–30 caracteres), sendo lido por scanners e leitores a laser.</p>
+                <p>O <strong>QR Code</strong> é formado por pequenos quadrados, armazena mais dados (até milhares de caracteres), pode ser lido diretamente por qualquer smartphone com câmera e <em>continua funcionando mesmo com pequenos danos ou sujeira</em> graças ao sistema Reed-Solomon de correção de erros.</p>
+            </div>
+        </div>
+
+        <!-- Seção Extra com Mais Informações Detalhadas -->
+        <div class="extra-section">
+            <h2 class="extra-title">✦ Informações Adicionais e Curiosidades ✦</h2>
+            <div class="cards-grid">
+                
+                <div class="info-card">
+                    <h4>💖 História do QR Code</h4>
+                    <p>Foi inventado em 1994 no Japão por Masahiro Hara, da empresa Denso Wave, originalmente para rastrear peças de carros com mais rapidez nas fábricas.</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>🛍️ Padrão EAN-13</h4>
+                    <p>O código de barras mais comum em produtos de supermercado no Brasil é o EAN-13, contendo 13 dígitos que identificam o país, a empresa fabricante e o produto.</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>🛡️ Correção de Erros</h4>
+                    <p>O QR Code possui 4 níveis de correção de erros (L, M, Q, H). No nível mais alto (H), ele consegue ser lido mesmo se até 30% do código for rasgado ou coberto.</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>📱 Pix e Facilidade</h4>
+                    <p>No Brasil, o QR Code se tornou essencial no sistema de pagamentos Pix, permitindo transferências instantâneas via dados no formato BR Code em segundos.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            <p>Guia Educativo sobre QR Code & Código de Barras • Estilo Rosa Personalizado</p>
+        </footer>
 
     </div>
-
-    <footer>
-        <p>&copy; Guia de Tecnologias de Identificação Automática. Criado com HTML5 & CSS3 puro.</p>
-    </footer>
 
 </body>
 </html>
