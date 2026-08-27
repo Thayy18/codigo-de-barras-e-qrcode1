@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QRCode e Código de Barras</title>
-    <!-- Importando fontes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Grand+Hotel&family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     
-    <!-- Estilos básicos para o container do vídeo ficar responsivo -->
     <style>
         .video-container {
             position: relative;
@@ -28,6 +26,27 @@
             width: 100%;
             height: 100%;
             border: 0;
+        }
+        .canva-cta-block {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .canva-btn {
+            display: inline-block;
+            background-color: #00c4cc;
+            color: #ffffff;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 196, 204, 0.3);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .canva-btn:hover {
+            background-color: #00a8af;
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -57,7 +76,6 @@
             <div class="barcode-numbers">0 00035 54562 0</div>
         </header>
 
-        <!-- NOVO BLOCO: Vídeo do Google Drive Incorporado -->
         <div class="section-block">
             <div class="badge-box">
                 <div class="badge-title">Vídeo</div>
@@ -74,7 +92,6 @@
             </div>
         </div>
 
-        <!-- Bloco 1: QR Code o que é? -->
         <div class="section-block reverse">
             <div class="badge-box">
                 <div class="badge-title">QRCode</div>
@@ -86,7 +103,6 @@
             </div>
         </div>
 
-        <!-- Bloco 2: Código de barras o que é? -->
         <div class="section-block">
             <div class="badge-box">
                 <div class="badge-title">Código de barras</div>
@@ -98,7 +114,6 @@
             </div>
         </div>
 
-        <!-- Bloco 3: Uso no dia a dia -->
         <div class="section-block reverse">
             <div class="badge-box">
                 <div class="badge-title">Uso no dia</div>
@@ -110,7 +125,6 @@
             </div>
         </div>
 
-        <!-- Bloco 4: Características -->
         <div class="section-block">
             <div class="badge-box">
                 <div class="badge-title">Características</div>
@@ -118,53 +132,4 @@
                     <div class="qr-pixel"></div>
                     <div class="qr-pixel"></div>
                     <div class="qr-pixel"></div>
-                    <div class="qr-pixel"></div>
-                    <div class="qr-pixel" style="background:transparent;"></div>
-                    <div class="qr-pixel"></div>
-                    <div class="qr-pixel"></div>
-                    <div class="qr-pixel"></div>
-                    <div class="qr-pixel"></div>
-                </div>
-            </div>
-            <div class="content-box">
-                <p>O <strong>código de barras</strong> é formado por linhas verticais e armazena poucas informações (geralmente até 20–30 caracteres), sendo lido por scanners e leitores a laser.</p>
-                <p>O <strong>QR Code</strong> é formado por pequenos quadrados, armazena mais dados (até milhares de caracteres), pode ser lido diretamente por qualquer smartphone com câmera e <em>continua funcionando mesmo com pequenos danos ou sujeira</em> graças ao sistema Reed-Solomon de correção de erros.</p>
-            </div>
-        </div>
-
-        <!-- Seção Extra com Mais Informações Detalhadas -->
-        <div class="extra-section">
-            <h2 class="extra-title">✦ Informações Adicionais e Curiosidades ✦</h2>
-            <div class="cards-grid">
-                
-                <div class="info-card">
-                    <h4>💖 História do QR Code</h4>
-                    <p>Foi inventado em 1994 no Japão por Masahiro Hara, da empresa Denso Wave, originalmente para rastrear peças de carros com mais rapidez nas fábricas.</p>
-                </div>
-
-                <div class="info-card">
-                    <h4>🛍️ Padrão EAN-13</h4>
-                    <p>O código de barras mais comum em produtos de supermercado no Brasil é o EAN-13, contendo 13 dígitos que identificam o país, a empresa fabricante e o produto.</p>
-                </div>
-
-                <div class="info-card">
-                    <h4>🛡️ Correção de Erros</h4>
-                    <p>O QR Code possui 4 níveis de correção de erros (L, M, Q, H). No nível mais alto (H), ele consegue ser lido mesmo se até 30% do código for rasgado ou coberto.</p>
-                </div>
-
-                <div class="info-card">
-                    <h4>📱 Pix e Facilidade</h4>
-                    <p>No Brasil, o QR Code se tornou essencial no sistema de pagamentos Pix, permitindo transferências instantâneas via dados no formato BR Code em segundos.</p>
-                </div>
-
-            </div>
-        </div>
-
-        <footer>
-            <p>Guia Educativo sobre QR Code & Código de Barras • Estilo Rosa Personalizado</p>
-        </footer>
-
-    </div>
-
-</body>
-</html>
+                    <div class="qr-pixel
