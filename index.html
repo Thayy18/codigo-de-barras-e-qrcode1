@@ -4,11 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QRCode e Código de Barras</title>
-    <!-- Importando fontes bonitas do Google Fonts -->
+    <!-- Importando fontes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Grand Hotel&family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Grand+Hotel&family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Estilos básicos para o container do vídeo ficar responsivo -->
+    <style>
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Proporção 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 15px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
 </head>
 <body>
 
@@ -36,8 +57,25 @@
             <div class="barcode-numbers">0 00035 54562 0</div>
         </header>
 
-        <!-- Bloco 1: QR Code o que é? -->
+        <!-- NOVO BLOCO: Vídeo do Google Drive Incorporado -->
         <div class="section-block">
+            <div class="badge-box">
+                <div class="badge-title">Vídeo</div>
+                <div class="badge-subtitle">Explicativo</div>
+            </div>
+            <div class="content-box">
+                <p><strong>Assista ao vídeo explicativo:</strong></p>
+                <div class="video-container">
+                    <iframe 
+                        src="https://drive.google.com/file/d/1ZIP4L6wUAd-Fb6a9ZB28_OaaAAmT_OgB/preview" 
+                        allow="autoplay">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bloco 1: QR Code o que é? -->
+        <div class="section-block reverse">
             <div class="badge-box">
                 <div class="badge-title">QRCode</div>
                 <div class="badge-subtitle">o que é?</div>
@@ -49,7 +87,7 @@
         </div>
 
         <!-- Bloco 2: Código de barras o que é? -->
-        <div class="section-block reverse">
+        <div class="section-block">
             <div class="badge-box">
                 <div class="badge-title">Código de barras</div>
                 <div class="badge-subtitle">o que é?</div>
@@ -61,7 +99,7 @@
         </div>
 
         <!-- Bloco 3: Uso no dia a dia -->
-        <div class="section-block">
+        <div class="section-block reverse">
             <div class="badge-box">
                 <div class="badge-title">Uso no dia</div>
                 <div class="badge-subtitle">a dia</div>
@@ -73,7 +111,7 @@
         </div>
 
         <!-- Bloco 4: Características -->
-        <div class="section-block reverse">
+        <div class="section-block">
             <div class="badge-box">
                 <div class="badge-title">Características</div>
                 <div class="qr-icon-graphic">
